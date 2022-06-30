@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: flaskdemoapp
+  name: flaskdemoapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flaskdemoapp
+  template:
+    metadata:
+      labels:
+        app: flaskdemoapp
+    spec:
+      containers:
+      - name: myapp
+        image: nanajanashia/argocd-app:1.2
+        ports:
+        - containerPort: 8080
