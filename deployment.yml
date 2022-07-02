@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: moezg/springboot:16
+        image: moezg/springboot:17
         ports:
         - containerPort: 8080
