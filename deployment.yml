@@ -2,20 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: flaskdemoapp
-  name: flaskdemoapp
+    app: springdemoapp
+  name: springdemoapp
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: flaskdemoapp
+      app: springdemoapp
   template:
     metadata:
       labels:
-        app: flaskdemoapp
+        app: springdemoapp
     spec:
       containers:
       - name: myapp
-        image: nanajanashia/argocd-app:1.2
+        image: moezg/springboot:3
         ports:
-        - containerPort: 5000
+        - containerPort: 8080
