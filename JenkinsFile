@@ -1,3 +1,4 @@
+//attention: this pipline has a variable called DOCKERTAG so when you configure this job in your jenkins don't forget to add the variable DOCKERTAG
 node {
     def app
 
