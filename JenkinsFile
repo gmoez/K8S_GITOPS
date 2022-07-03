@@ -1,20 +1,19 @@
 node {
     def app
 
-    stage('Clone repository') {
+    stage('Clone repository from git') {
       
 
         checkout scm
     }
 
-    stage('Update GIT') {
+    stage('Update GIT repo for  ARGO') {
             script {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                        //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
-                        sh "git config user.email moez.gammoua@outlook.com"
-                        sh "git config user.name gmoez"
-                        //sh "git switch master"
+                      
+                        sh "git config user.email put_your_github_mail"
+                        sh "git config user.name put_your_github_username"
                         sh "sed -i '' 's+moezg/springboot.*+moezg/springboot:${DOCKERTAG}+g' deployment.yml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
